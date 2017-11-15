@@ -2,7 +2,9 @@ const express = require('express');
 //const path = require('path');
 const bodyParser = require('body-parser');
 const ejs = require('ejs')
+
 var index = require('./routes/index')
+var users = require('./routes/users')
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.use('/', index);
+app.use('/users', users)
 
 app.use((req, res, next)=>{
   var err = new Error('Not Found');
